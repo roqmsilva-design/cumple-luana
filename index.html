@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitacion Luana 18</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#c8b89a;display:flex;align-items:flex-start;justify-content:center;min-height:100vh;padding:16px;font-family:'Nunito',sans-serif;}
+    .card{width:100%;max-width:400px;border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(40,20,5,0.4);background:#f0e6d3;}
+    
+    .hero{position:relative;width:100%;}
+    .hero img{width:100%;display:block;}
+    .hero-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(235,218,185,0.97));padding:28px 24px 16px;text-align:center;}
+    .invite-pre{font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#2a1500;display:block;margin-bottom:6px;}
+    .date-txt{font-family:'Dancing Script',cursive;font-size:22px;color:#3d2005;display:block;line-height:1.2;}
+    .time-txt{font-size:12px;font-weight:700;color:#7a5230;letter-spacing:1px;display:block;margin-top:2px;}
+    
+    .body{background:#f0e6d3;padding:14px 20px 0;}
+    
+    .info-box{background:rgba(255,248,235,0.9);border:1.5px solid rgba(140,100,50,0.28);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;}
+    .info-icon{font-size:20px;flex-shrink:0;}
+    .info-label{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#8b6030;margin-bottom:2px;}
+    .info-val{font-size:14px;font-weight:700;color:#3d2005;line-height:1.3;}
+    
+    .deadline-box{background:#fff8e8;border:1.5px solid #c4a06a;border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+    .deadline-icon{font-size:20px;flex-shrink:0;}
+    .deadline-txt{font-size:13px;font-weight:700;color:#6b3d10;line-height:1.3;}
+    .deadline-date{font-family:'Dancing Script',cursive;font-size:17px;color:#a05010;display:block;}
+    
+    .divider{height:1.5px;background:repeating-linear-gradient(90deg,#c4a06a 0,#c4a06a 8px,transparent 8px,transparent 14px);margin:0 0 14px;border-radius:2px;}
+    
+    .confirm-section{background:rgba(80,96,45,0.93);border-radius:14px;padding:18px 18px 16px;text-align:center;margin-bottom:16px;}
+    .confirm-title{font-family:'Dancing Script',cursive;font-size:24px;color:#eaf5cc;margin-bottom:3px;}
+    .confirm-sub{font-size:11px;color:#b8d47a;letter-spacing:0.5px;margin-bottom:14px;font-weight:600;}
+    .guests-ctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;}
+    .guests-lbl{font-size:12px;font-weight:700;color:#d4e8a0;}
+    .cnt-btn{background:rgba(255,255,255,0.18);border:1.5px solid #a8c46a;color:#eaf5cc;width:30px;height:30px;border-radius:7px;font-size:18px;font-weight:700;cursor:pointer;line-height:1;}
+    .cnt-val{font-family:'Dancing Script',cursive;font-size:30px;color:#fff;min-width:32px;text-align:center;}
+    
+    .btn-group{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;justify-content:center;}
+    .wa-btn, .preview-btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;padding:13px 28px;border-radius:30px;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s;}
+    .wa-btn{background:#25d366;color:#fff;}
+    .wa-btn:hover{background:#20ba5a;transform:scale(1.05);}
+    .preview-btn{background:#8b7355;color:#fff;}
+    .preview-btn:hover{background:#6b5545;transform:scale(1.05);}
+    
+    .footer{text-align:center;padding:10px 0 18px;}
+    .footer-txt{font-family:'Caveat',cursive;font-size:19px;color:#4a2a08;font-weight:700;}
+    .footer-deco{color:#c4a06a;margin:0 6px;}
+    
+    /* Modal de previsualización */
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;padding:16px;}
+    .modal.active{display:flex;}
+    
+    .modal-content{background:#fff;border-radius:16px;padding:20px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:80vh;overflow-y:auto;}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:2px solid #e8e8e8;padding-bottom:12px;}
+    .modal-title{font-size:18px;font-weight:700;color:#1f2937;}
+    .modal-close{background:none;border:none;font-size:24px;cursor:pointer;color:#6b7280;}
+    
+    .wa-preview{background:#e8f5e9;border-left:4px solid #25d366;padding:16px;border-radius:8px;margin-bottom:16px;line-height:1.6;color:#2a2a2a;font-size:14px;white-space:pre-wrap;word-wrap:break-word;font-family:'Courier New',monospace;}
+    
+    .modal-buttons{display:flex;gap:10px;margin-top:16px;}
+    .modal-btn{flex:1;padding:12px;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:0.3s;}
+    .modal-btn-cancel{background:#e8e8e8;color:#2a2a2a;}
+    .modal-btn-cancel:hover{background:#d0d0d0;}
+    .modal-btn-send{background:#25d366;color:#fff;}
+    .modal-btn-send:hover{background:#20ba5a;}
+  </style>
+</head>
+<body>
+<div class="card">
+
+  <div class="hero">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Cumpleaños">
+    <div class="hero-label">
+      <span class="invite-pre">¡Te invitamos a celebrar!</span>
+      <span class="date-txt">Sábado 23 de Mayo, 2026</span>
+      <span class="time-txt">📍 desde las 20:30 hs.</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="info-box">
+      <span class="info-icon">🏛️</span>
+      <div>
+        <div class="info-label">Lugar</div>
+        <div class="info-val">Sede Social de la<br>Cooperativa San Lorenzo</div>
+      </div>
+    </div>
+
+    <div class="deadline-box">
+      <span class="deadline-icon">📋</span>
+      <div>
+        <div class="deadline-txt">Confirmá tu asistencia antes del</div>
+        <span class="deadline-date">Miércoles 20 de Mayo, 2026</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="confirm-section">
+      <div class="confirm-title">¿Venís? ¡Confirmá!</div>
+      <div class="confirm-sub">Selecioná cuántos son y tocá el botón</div>
+      <div class="guests-ctrl">
+        <span class="guests-lbl">Asistirán</span>
+        <button class="cnt-btn" onclick="decreaseGuests()">−</button>
+        <span class="cnt-val" id="gc">1</span>
+        <button class="cnt-btn" onclick="increaseGuests()">+</button>
+        <span class="guests-lbl">persona(s)</span>
+      </div>
+      <div class="btn-group">
+        <button class="preview-btn" onclick="showPreview()">
+          👁️ Vista Previa
+        </button>
+        <a class="wa-btn" href="#" onclick="sendWhatsApp(event)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.645.074-1.515-.774-2.499-2.1-3.426-3.741-.56-.987-.3-1.546.174-2.052.19-.203.38-.52.57-.745.19-.225.095-.42-.047-.595-.142-.174-.565-1.367-.775-1.869-.201-.502-.404-.434-.57-.434-.165 0-.347-.005-.529-.005-.182 0-.48.069-.732.334-.252.265-.96.938-.96 2.286 0 1.348.984 2.65 1.121 2.832.137.182 1.942 2.959 4.713 4.154.659.286 1.174.458 1.574.587.66.209 1.261.18 1.734.109.53-.079 1.63-.666 1.859-1.31.229-.644.229-1.194.16-1.31-.069-.117-.252-.182-.529-.32m-5.048 7.18h.008c1.49 0 2.95-.356 4.38-1.054l.314.02 3.26 1.053-1.035-3.736.027-.438a7.046 7.046 0 0 0 2.171-5.003c0-3.897-3.158-7.056-7.05-7.056-1.872 0-3.626.73-4.948 2.052A7.035 7.035 0 0 0 2.908 9.99c0 3.897 3.158 7.056 7.05 7.056m5.338 5.539c-1.338.63-2.838.974-4.388.974-2.229 0-4.338-.648-6.115-1.778l-.424-.256-4.41 1.421 1.446-5.185-.335-.534C.713 18.017 0 15.624 0 13.081 0 5.946 5.935 0 13.236 0c3.552 0 6.885 1.395 9.39 3.903 2.506 2.507 3.889 5.84 3.889 9.39 0 7.141-5.935 12.946-13.177 12.946" /></svg>
+          Confirmar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-deco">✦</span>
+      <span class="footer-txt">Con cariño, Milagros Luana</span>
+      <span class="footer-deco">✦</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal de previsualización -->
+<div class="modal" id="previewModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">📱 Vista Previa WhatsApp</span>
+      <button class="modal-close" onclick="closePreview()">✕</button>
+    </div>
+    <div class="wa-preview" id="previewText"></div>
+    <div class="modal-buttons">
+      <button class="modal-btn modal-btn-cancel" onclick="closePreview()">Cancelar</button>
+      <button class="modal-btn modal-btn-send" onclick="sendFromPreview()">Enviar por WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function getGuests() {
+    return parseInt(document.getElementById('gc').textContent);
+  }
+
+  function decreaseGuests() {
+    const guests = Math.max(1, getGuests() - 1);
+    document.getElementById('gc').textContent = guests;
+  }
+
+  function increaseGuests() {
+    const guests = Math.min(20, getGuests() + 1);
+    document.getElementById('gc').textContent = guests;
+  }
+
+  function generateMessage() {
+    const guests = getGuests();
+    const guestText = guests === 1 ? 'persona' : 'personas';
+    return `¡Hola! 👋
+
+Confirmo mi asistencia al cumpleaños de Milagros Luana 🎉
+
+📅 Sábado 23 de Mayo, 2026
+🕘 Desde las 20:30 hs.
+📍 Sede Social Cooperativa San Lorenzo
+
+✅ Asistirán: ${guests} ${guestText}
+
+¡Nos vemos! 🥳`;
+  }
+
+  function showPreview() {
+    const message = generateMessage();
+    document.getElementById('previewText').textContent = message;
+    document.getElementById('previewModal').classList.add('active');
+  }
+
+  function closePreview() {
+    document.getElementById('previewModal').classList.remove('active');
+  }
+
+  function sendFromPreview() {
+    closePreview();
+    sendWhatsApp(null);
+  }
+
+  function sendWhatsApp(event) {
+    if (event) event.preventDefault();
+    
+    const message = generateMessage();
+    const encodedMsg = encodeURIComponent(message);
+    
+    // Número de WhatsApp (reemplazar con el número real)
+    const whatsappNumber = '5491234567890'; // Formato: código país + número sin +
+    
+    // URL de WhatsApp Web (si está disponible) o app
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMsg}`;
+    
+    window.open(whatsappURL, '_blank');
+  }
+
+  // Cerrar modal al hacer clic fuera
+  document.getElementById('previewModal').addEventListener('click', function(e) {
+    if (e.target === this) closePreview();
+  });
+</script>
+</body>
+</html>
